@@ -34,8 +34,7 @@ let private errInnerType =
                           Name = None
                           Properties =
                               [
-                                  "TypeName", Prim (PrimTypeKind.String StringFormat.String), None
-                                  "PropertyPath", TypeKind.Array (Prim <| PrimTypeKind.String StringFormat.String, None), None
+                                  "PropertyPath", Prim <| PrimTypeKind.String StringFormat.String, None
                               ]
                           Docs = None
                       }
@@ -110,8 +109,8 @@ let private innerErrToStringDecl =
     [
         errInnerGiraffeBinding, err, sprintfExpr "%sGiraffe binding error: %s" [identExpr sepVar; identExpr err]
         errInnerModelBindingUnexpectedNull, err,
-            sprintfExpr "%sUnexpected null has been found somewhere on path %s.%s"
-            ^ [identExpr sepVar; longIdentExpr (sprintf "%s.TypeName" err); paren (app (app (longIdentExpr "String.concat") (strExpr ".")) (longIdentExpr (sprintf "%s.PropertyPath" err))) ]
+            sprintfExpr "%sUnexpected null has been found on path %s"
+            ^ [identExpr sepVar; longIdentExpr (sprintf "%s.PropertyPath" err) ]
         errInnerFormatterBindingExn, err, longIdentExpr (sprintf "%s.Message" err)
         errInnerCombined, err,
             sprintfExpr "%sMultiple errors:\\n%s"

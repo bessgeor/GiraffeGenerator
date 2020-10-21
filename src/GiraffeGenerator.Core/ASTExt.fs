@@ -8,6 +8,7 @@ module Seq =
     let collectExpr = longIdentExpr "Seq.collect" |> app
     let chooseExpr = longIdentExpr "Seq.choose" |> app
     let mapExpr = longIdentExpr "Seq.map" |> app
+    let mapiExpr = longIdentExpr "Seq.mapi" |> app
     let filterExpr = longIdentExpr "Seq.filter" |> app
     let reduceExpr reducer initial = app (app (longIdentExpr "Seq.reduce") reducer) initial
 module Option =

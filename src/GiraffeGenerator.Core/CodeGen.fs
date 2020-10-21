@@ -144,7 +144,7 @@ let hasNullableValuesPossible api =
                 if method.Parameters.IsSome then
                     for KeyValue(loc, schema) in method.Parameters.Value do
                         if isNotPath loc then
-                            CodeGenNullChecking.schemaHasNullableValues schema
+                            CodeGenNullChecking.kindHasNullableValues schema.Kind
     } |> Seq.contains true
 
 let hasErrorsPossible api =
